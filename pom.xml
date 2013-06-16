@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+
+    <packaging>jar</packaging>
+    <groupId>org.webjars</groupId>
+    <artifactId>emberjs-data</artifactId>
+    <version>0.13-SNAPSHOT</version>
+    <name>Ember.js Data</name>
+    <description>WebJar for Ember.js Data</description>
+    <url>http://webjars.org</url>
+
+    <licenses>
+        <license>
+            <name>Copyright (c) 2012 Yehuda Katz, Tom Dale, Charles Jolley and Ember.js contributors</name>
+            <url>https://github.com/emberjs/data/blob/master/LICENSE</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>http://github.com/webjars/emberjs</url>
+        <connection>scm:git:https://github.com/webjars/emberjs-data.git</connection>
+        <developerConnection>scm:git:https://github.com/webjars/emberjs-data.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>rafelbev</id>
+            <name>Raphael Borg Ellul Vincenti</name>
+            <email>raphael@linux.org.mt</email>
+        </developer>
+    </developers>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>emberjs</artifactId>
+            <version>1.0.0-rc.5-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <upstreamVersion>0.13</upstreamVersion>
+        <upstreamSourceUrl>http://builds.emberjs.com.s3.amazonaws.com</upstreamSourceUrl>
+        <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${upstreamVersion}</destDir>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>wagon-maven-plugin</artifactId>
+                <version>1.0-beta-4</version>
+                <executions>
+                    <execution>
+                        <id>download-full-js</id>
+                        <phase>process-resources</phase>
+                        <goals><goal>download-single</goal></goals>
+                        <configuration>
+                            <url>${upstreamSourceUrl}</url>
+                            <fromFile>ember-data-${upstreamVersion}.js</fromFile>
+                            <toFile>${destDir}/ember-data.js</toFile>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>download-min-js</id>
+                        <phase>process-resources</phase>
+                        <goals><goal>download-single</goal></goals>
+                        <configuration>
+                            <url>${upstreamSourceUrl}</url>
+                            <fromFile>ember-data-${upstreamVersion}.min.js</fromFile>
+                            <toFile>${destDir}/ember-data.min.js</toFile>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.3.2</version>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+                <targetPath>${destDir}</targetPath>
+            </resource>
+        </resources>
+    </build>
+
+</project>
