@@ -43,14 +43,14 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>emberjs</artifactId>
-            <version>1.0.0-rc.5</version>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <upstreamVersion>0.13</upstreamVersion>
-        <upstreamSourceUrl>http://builds.emberjs.com.s3.amazonaws.com</upstreamSourceUrl>
+        <upstreamVersion>0.14</upstreamVersion>
+        <upstreamSourceUrl>http://builds.emberjs.com/tags/v${upstreamVersion}</upstreamSourceUrl>
         <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${upstreamVersion}</destDir>
     </properties>
 
@@ -67,7 +67,7 @@
                         <goals><goal>download-single</goal></goals>
                         <configuration>
                             <url>${upstreamSourceUrl}</url>
-                            <fromFile>ember-data-${upstreamVersion}.js</fromFile>
+                            <fromFile>ember-data.js</fromFile>
                             <toFile>${destDir}/ember-data.js</toFile>
                         </configuration>
                     </execution>
@@ -77,8 +77,18 @@
                         <goals><goal>download-single</goal></goals>
                         <configuration>
                             <url>${upstreamSourceUrl}</url>
-                            <fromFile>ember-data-${upstreamVersion}.min.js</fromFile>
+                            <fromFile>ember-data.min.js</fromFile>
                             <toFile>${destDir}/ember-data.min.js</toFile>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>download-prod-js</id>
+                        <phase>process-resources</phase>
+                        <goals><goal>download-single</goal></goals>
+                        <configuration>
+                            <url>${upstreamSourceUrl}</url>
+                            <fromFile>ember-data.prod.js</fromFile>
+                            <toFile>${destDir}/ember-data.prod.js</toFile>
                         </configuration>
                     </execution>
                 </executions>
