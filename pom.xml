@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>emberjs-data</artifactId>
-    <version>1.0.0-beta.3</version>
+    <version>1.0.1-beta.3-SNAPSHOT</version>
     <name>Ember.js Data</name>
     <description>WebJar for Ember.js Data</description>
     <url>http://webjars.org</url>
@@ -28,7 +28,7 @@
         <url>http://github.com/webjars/emberjs</url>
         <connection>scm:git:https://github.com/webjars/emberjs-data.git</connection>
         <developerConnection>scm:git:https://github.com/webjars/emberjs-data.git</developerConnection>
-        <tag>emberjs-data-1.0.0-beta.3</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <developers>
