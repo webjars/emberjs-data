@@ -25,7 +25,7 @@
     </licenses>
 
     <scm>
-        <url>http://github.com/webjars/emberjs</url>
+        <url>http://github.com/webjars/emberjs-data</url>
         <connection>scm:git:https://github.com/webjars/emberjs-data.git</connection>
         <developerConnection>scm:git:https://github.com/webjars/emberjs-data.git</developerConnection>
         <tag>HEAD</tag>
